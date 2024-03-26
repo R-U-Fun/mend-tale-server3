@@ -2,8 +2,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
+# from transformers import AutoTokenizer, AutoModelForSequenceClassification
+# import torch
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
@@ -21,24 +21,24 @@ print(APIKey)
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/Tokenizer', methods=['POST'])
-def Tokenizer():
-    model_name = "bert-base-uncased"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    data = request.get_json()
-    TokenizerText = data.get('TokenizerText', '')
-    print(TokenizerText)
-    sequence = TokenizerText
-    print(sequence)
-    res = tokenizer(sequence)
-    print(res)
-    tokens = tokenizer.tokenize(sequence)
-    print(tokens)
-    ids = tokenizer.convert_tokens_to_ids(tokens)
-    print(ids)
-    join = ", ".join(tokens)
-    print(join)
-    return jsonify(join)
+# @app.route('/Tokenizer', methods=['POST'])
+# def Tokenizer():
+#     model_name = "bert-base-uncased"
+#     tokenizer = AutoTokenizer.from_pretrained(model_name)
+#     data = request.get_json()
+#     TokenizerText = data.get('TokenizerText', '')
+#     print(TokenizerText)
+#     sequence = TokenizerText
+#     print(sequence)
+#     res = tokenizer(sequence)
+#     print(res)
+#     tokens = tokenizer.tokenize(sequence)
+#     print(tokens)
+#     ids = tokenizer.convert_tokens_to_ids(tokens)
+#     print(ids)
+#     join = ", ".join(tokens)
+#     print(join)
+#     return jsonify(join)
 
 # Model = AutoModelForSequenceClassification.from_pretrained("./mt_ml_models/MT_DS_HP1_Mood_Bal_v6_Model/")
 # Tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
